@@ -1,0 +1,17 @@
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Application.deps.json
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Application.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Application.pdb
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Domain.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Infrastructure.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Domain.pdb
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/bin/Debug/net8.0/ProductApp.Infrastructure.pdb
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.csproj.AssemblyReference.cache
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.AssemblyInfoInputs.cache
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.AssemblyInfo.cs
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.csproj.CoreCompileInputs.cache
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.csproj.CopyComplete
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/refint/ProductApp.Application.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.pdb
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ref/ProductApp.Application.dll
