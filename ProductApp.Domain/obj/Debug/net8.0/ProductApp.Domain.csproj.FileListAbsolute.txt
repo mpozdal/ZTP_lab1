@@ -9,3 +9,4 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Domain/obj/Debug/net8.0/refint/ProductApp.Domain.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Domain/obj/Debug/net8.0/ProductApp.Domain.pdb
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Domain/obj/Debug/net8.0/ref/ProductApp.Domain.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Domain/obj/Debug/net8.0/ProductApp.Domain.sourcelink.json

@@ -15,3 +15,4 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/refint/ProductApp.Application.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.pdb
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ref/ProductApp.Application.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.sourcelink.json

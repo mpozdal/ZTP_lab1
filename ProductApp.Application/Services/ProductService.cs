@@ -7,10 +7,12 @@ namespace ProductApp.Application.Services;
 public class ProductService: IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly IForbiddenPhraseService _forbiddenPhraseService;
 
-    public ProductService(IProductRepository productRepository)
+    public ProductService(IProductRepository productRepository, IForbiddenPhraseService forbiddenPhraseService)
     {
         _productRepository = productRepository;
+        _forbiddenPhraseService = forbiddenPhraseService;
     }
 
     public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
@@ -42,6 +44,10 @@ public class ProductService: IProductService
 
     public async Task<ProductDto> CreateProductAsync(ProductDto productDto)
     {
+        if (await _forbiddenPhraseService.ContainsForbiddenPhrase(productDto.Name))
+        {
+            throw new InvalidOperationException("Product name contains forbidden phrase.");
+        }
         var product = new Product
         {
             Name = productDto.Name,
@@ -55,7 +61,6 @@ public class ProductService: IProductService
 
         return productDto;
     }
-
     public async Task<bool> UpdateProductAsync(ProductDto productDto)
     {
         var existingProduct = await _productRepository.GetByIdAsync(productDto.Id);
@@ -78,4 +83,5 @@ public class ProductService: IProductService
         await _productRepository.DeleteAsync(id);
         return true;
     }
+    
 }

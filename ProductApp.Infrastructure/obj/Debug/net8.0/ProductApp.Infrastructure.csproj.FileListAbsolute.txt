@@ -15,3 +15,4 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Infrastructure/obj/Debug/net8.0/ProductApp.Infrastructure.pdb
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Infrastructure/obj/Debug/net8.0/ProductApp.Infrastructure.genruntimeconfig.cache
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Infrastructure/obj/Debug/net8.0/ref/ProductApp.Infrastructure.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Infrastructure/obj/Debug/net8.0/ProductApp.Infrastructure.sourcelink.json
