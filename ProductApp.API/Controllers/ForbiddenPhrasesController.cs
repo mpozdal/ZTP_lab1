@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductApp.Application.DTOs;
-using ProductApp.Application.Services;
+using ProductApp.Application.Interfaces;
 
 namespace ProductApp.API.Controllers;
 
@@ -20,8 +20,8 @@ public class ForbiddenPhrasesController: ControllerBase
         var phrases =  await _forbiddenPhraseService.GetAllPharsesAsync();
         return Ok(phrases);
     }
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id)
     {
         var pharse = await _forbiddenPhraseService.GetPharseByIdAsync(id);
         if (pharse == null)
@@ -37,8 +37,8 @@ public class ForbiddenPhrasesController: ControllerBase
         var createdProduct = await _forbiddenPhraseService.CreatePharseAsync(forbiddenPhraseDto);
         return CreatedAtAction(nameof(GetById), new { id = createdProduct.Id }, createdProduct);
     }
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
     {
         var deleted = await _forbiddenPhraseService.DeletePharseAsync(id);
         if (!deleted)
@@ -48,8 +48,8 @@ public class ForbiddenPhrasesController: ControllerBase
 
         return NoContent();
     }
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] ForbiddenPhraseDto forbiddenPhraseDto)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] ForbiddenPhraseDto forbiddenPhraseDto)
     {
         if (id != forbiddenPhraseDto.Id)
             return BadRequest("bad request");

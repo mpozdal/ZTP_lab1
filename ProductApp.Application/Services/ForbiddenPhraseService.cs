@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ProductApp.Application.DTOs;
 using ProductApp.Domain.Entities;
-using ProductApp.Infrastructure.Repositories;
+using ProductApp.Domain.Interfaces;
+using ProductApp.Application.Interfaces;
 
 namespace ProductApp.Application.Services;
 
@@ -24,7 +25,7 @@ public class ForbiddenPhraseService: IForbiddenPhraseService
             Phrase = p.Phrase,
         });
     }
-    public async Task<ForbiddenPhraseDto?> GetPharseByIdAsync(int id)
+    public async Task<ForbiddenPhraseDto?> GetPharseByIdAsync(Guid id)
     {
         throw new NotImplementedException();
     }
@@ -49,12 +50,13 @@ public class ForbiddenPhraseService: IForbiddenPhraseService
         if (existingProduct == null) return false;
 
         existingProduct.Phrase = forbiddenPhraseDto.Phrase;
+        existingProduct.UpdatedAt = DateTime.Now;
 
         await _forbiddenPhraseRepository.UpdateAsync(existingProduct);
         return true;
     }
 
-    public async Task<bool> DeletePharseAsync(int id)
+    public async Task<bool> DeletePharseAsync(Guid id)
     {
         var exisitingPharse = await _forbiddenPhraseRepository.GetByIdAsync(id);
         if (exisitingPharse == null)
@@ -64,10 +66,5 @@ public class ForbiddenPhraseService: IForbiddenPhraseService
         await _forbiddenPhraseRepository.DeleteAsync(id);
         return true;
     }
-
-    public async Task<bool> ContainsForbiddenPhrase(string name)
-    {
-            var forbiddenPhrases = await _forbiddenPhraseRepository.GetAllAsync();
-            return forbiddenPhrases.Any(phrase => name.Contains(phrase.Phrase, StringComparison.OrdinalIgnoreCase));
-    }
+    
 }

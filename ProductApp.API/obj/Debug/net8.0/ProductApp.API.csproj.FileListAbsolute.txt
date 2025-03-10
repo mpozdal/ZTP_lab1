@@ -110,3 +110,7 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/ProductApp.Application.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/ProductApp.Application.pdb
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/ProductApp.API.sourcelink.json
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll

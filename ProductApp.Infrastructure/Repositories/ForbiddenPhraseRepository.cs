@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductApp.Domain.Entities;
+using ProductApp.Domain.Interfaces;
 using ProductApp.Infrastructure.Context;
 
 namespace ProductApp.Infrastructure.Repositories;
@@ -18,7 +19,7 @@ public class ForbiddenPhraseRepository: IForbiddenPhraseRepository
         return await _context.ForbiddenPhrase.ToListAsync();
     }
 
-    public async Task<ForbiddenPhrase> GetByIdAsync(int id)
+    public async Task<ForbiddenPhrase> GetByIdAsync(Guid id)
     {
         return await _context.ForbiddenPhrase.FindAsync(id);
     }
@@ -35,7 +36,7 @@ public class ForbiddenPhraseRepository: IForbiddenPhraseRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var pharse = await _context.ForbiddenPhrase.FindAsync(id);
         if (pharse != null)

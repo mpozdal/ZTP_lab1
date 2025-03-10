@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProductApp.Domain.Entities;
 using ProductApp.Infrastructure.Context;
-
+using ProductApp.Domain.Interfaces;
 namespace ProductApp.Infrastructure.Repositories;
 
 public class ProductRepository: IProductRepository
@@ -18,7 +18,7 @@ public class ProductRepository: IProductRepository
         return await _context.Products.ToListAsync();
     }
 
-    public async Task<Product> GetByIdAsync(int id)
+    public async Task<Product> GetByIdAsync(Guid id)
     {
         return await _context.Products.FindAsync(id);
     }
@@ -35,7 +35,7 @@ public class ProductRepository: IProductRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var product = await _context.Products.FindAsync(id);
         if (product != null)
@@ -43,5 +43,10 @@ public class ProductRepository: IProductRepository
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task<bool> ExistsByNameAsync(string productName, Guid? productId = null)
+    {
+        return await _context.Products.AnyAsync(p => p.Name == productName && (productId == null || p.Id != productId));
     }
 }

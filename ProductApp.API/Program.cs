@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using ProductApp.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using ProductApp.API.Middlewares;
 using ProductApp.Application;
 using ProductApp.Application.Services;
 using ProductApp.Infrastructure;
@@ -12,9 +13,12 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        );
         builder.Services.AddInfrastucture(builder.Configuration);
         builder.Services.AddApplicationServices();
+        
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -29,7 +33,7 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProductApp API v1"));
         }
-
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
         app.MapControllers();
         app.Run();
         
