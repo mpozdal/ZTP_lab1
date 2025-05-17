@@ -11,4 +11,6 @@ public interface IProductService
     Task<ProductDto> CreateProductAsync(ProductDto productDto);
     Task<bool> UpdateProductAsync(ProductDto productDto);
     Task<bool> DeleteProductAsync(Guid id);
+    Task<bool> ReserveProductAsync(Guid productId, int quantity);
+    Task<bool> ReleaseProductAsync(Guid productId, int quantity);
 }

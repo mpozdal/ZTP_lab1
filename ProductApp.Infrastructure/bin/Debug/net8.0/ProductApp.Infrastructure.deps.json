@@ -629,7 +629,10 @@
       "System.Threading.Channels/6.0.0": {},
       "ProductApp.Domain/1.0.0": {
         "runtime": {
-          "ProductApp.Domain.dll": {}
+          "ProductApp.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

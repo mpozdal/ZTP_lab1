@@ -10,9 +10,9 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.AssemblyInfoInputs.cache
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.AssemblyInfo.cs
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.csproj.CoreCompileInputs.cache
-/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.csproj.CopyComplete
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/refint/ProductApp.Application.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.pdb
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ref/ProductApp.Application.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductApp.Application.sourcelink.json
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.Application/obj/Debug/net8.0/ProductA.2FD14B52.Up2Date

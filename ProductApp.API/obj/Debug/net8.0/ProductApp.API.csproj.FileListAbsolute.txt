@@ -34,7 +34,6 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ProductApp.API.props
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/scopedcss/bundle/ProductApp.API.styles.css
-/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/ProductApp.API.csproj.CopyComplete
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/ProductApp.API.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/refint/ProductApp.API.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/ProductApp.API.pdb
@@ -114,3 +113,7 @@
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/bin/Debug/net8.0/ProductApp.API.staticwebassets.endpoints.json
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/staticwebassets.build.endpoints.json
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/staticwebassets/msbuild.ProductApp.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/Users/michalpozdal/Desktop/studia/mgr/1sem/ztp/ProductApp/ProductApp.API/obj/Debug/net8.0/ProductA.A15D0BDD.Up2Date

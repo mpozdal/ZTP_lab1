@@ -60,4 +60,27 @@ public class ProductController : ControllerBase
 
         return NoContent();
     }
+    
+    [HttpPost("{id:guid}/reserve")]
+    public async Task<IActionResult> Reserve(Guid id, [FromQuery] int quantity)
+    {
+        var result = await _productSerivce.ReserveProductAsync(id, quantity);
+
+        if (!result)
+            return BadRequest("Nie ma wystarczającej liczby sztuk do rezerwacji.");
+
+        return Ok($"Zarezerwowano {quantity} szt.");
+    }
+    [HttpPost("{id:guid}/release")]
+    public async Task<IActionResult> Release(Guid id, [FromQuery] int quantity)
+    {
+        var result = await _productSerivce.ReleaseProductAsync(id, quantity);
+
+        if (!result)
+            return BadRequest("Nie ma wystarczającej liczby sztuk do rezerwacji.");
+
+        return Ok($"Zwolniono {quantity} szt.");
+    }
+  
+    
 }

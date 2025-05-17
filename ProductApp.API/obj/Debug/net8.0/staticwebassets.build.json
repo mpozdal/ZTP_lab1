@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "R+WVgu36Tovxzfa6tdQpQmKuUe9lTVcxolTg4bo41uQ=",
+  "Hash": "wXOgkmp2q+r6uhdvzNcoURS5x0pZPBnNPhC/XAgpZyA=",
   "Source": "ProductApp.API",
   "BasePath": "_content/ProductApp.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

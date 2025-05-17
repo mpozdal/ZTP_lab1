@@ -2,7 +2,7 @@ namespace ProductApp.Domain.Entities;
 
 public class Product
 {
-    public Guid Id { get; set; }
+    public required Guid Id { get; init; }
     public string Name { get; set; }
     public string Description { get; set; }
     public decimal Price { get; set; }
@@ -11,4 +11,6 @@ public class Product
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public Category Category { get; set; }
+    public int ReservedStock { get; set; } = 0;
+    public int AvailableStock => Stock - ReservedStock;
 }

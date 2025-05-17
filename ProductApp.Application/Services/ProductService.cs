@@ -62,7 +62,8 @@ public class ProductService: IProductService
             Description = productDto.Description,
             CategoryId = productDto.CategoryId,
             Price = productDto.Price,
-            Stock = productDto.Stock
+            Stock = productDto.Stock,
+            Id = new Guid()
         };
         await _productRepository.AddAsync(product);
 
@@ -82,35 +83,18 @@ public class ProductService: IProductService
     
     var existingProduct = await _productRepository.GetByIdAsync(productDto.Id);
     if (existingProduct == null) return false;
-    
-    if (existingProduct.Name != productDto.Name)
-    {
-        await LogProductChangeAsync(existingProduct, "Name", existingProduct.Name, productDto.Name);
-        existingProduct.Name = productDto.Name;
-    }
+    var properties = typeof(ProductDto).GetProperties();
 
-    if (existingProduct.Description != productDto.Description)
+    foreach (var prop in properties)
     {
-        await LogProductChangeAsync(existingProduct, "Desc", existingProduct.Description, productDto.Description);
-        existingProduct.Description = productDto.Description;
-    }
+        var oldValue = prop.GetValue(existingProduct);
+        var newValue = prop.GetValue(productDto);
 
-    if (existingProduct.Price != productDto.Price)
-    {
-        await LogProductChangeAsync(existingProduct, "Price", existingProduct.Price.ToString(), productDto.Price.ToString());
-        existingProduct.Price = productDto.Price;
-    }
-
-    if (existingProduct.Stock != productDto.Stock)
-    {
-        await LogProductChangeAsync(existingProduct, "Stock", existingProduct.Stock.ToString(), productDto.Stock.ToString());
-        existingProduct.Stock = productDto.Stock;
-    }
-
-    if (existingProduct.CategoryId != productDto.CategoryId)
-    {
-        await LogProductChangeAsync(existingProduct, "Category", existingProduct.CategoryId.ToString(), productDto.CategoryId.ToString());
-        existingProduct.CategoryId = productDto.CategoryId;
+        if (!object.Equals(oldValue, newValue))
+        {
+            await LogProductChangeAsync(existingProduct, prop.Name, oldValue?.ToString(), newValue?.ToString());
+            prop.SetValue(existingProduct, newValue);
+        }
     }
     
     existingProduct.UpdatedAt = DateTime.Now;
@@ -152,34 +136,68 @@ private async Task LogProductChangeAsync(Product existingProduct, string changeT
         foreach (var policy in _policies)
         {
             ValidationResult result;
-            if (policy is NonNegativeStockPolicy)
+            switch (policy)
             {
-                result = await policy.Validate(productDto.Stock.ToString(), Guid.Empty);
-                validationResult.Errors.AddRange(result.Errors);
-                continue;
+                case NonNegativeStockPolicy:
+                    result = await policy.Validate(productDto.Stock.ToString(), Guid.Empty);
+                    validationResult.Errors.AddRange(result.Errors);
+                    break;
+                case UniqueNamePolicy:
+                    result = await policy.Validate(productDto.Name, productDto.Id);
+                    validationResult.Errors.AddRange(result.Errors);
+                    break;
+                case PriceRangePolicy:
+                    result = await policy.Validate(productDto.Price.ToString(), productDto.CategoryId);
+                    validationResult.Errors.AddRange(result.Errors);
+                    break;
+                default:
+                    result = await policy.Validate(productDto.Name, Guid.Empty);
+                    validationResult.Errors.AddRange(result.Errors);
+                    break;
             }
-
-            if (policy is UniqueNamePolicy)
-            {
-                result = await policy.Validate(productDto.Name, productDto.Id);
-                validationResult.Errors.AddRange(result.Errors);
-                continue;
-            }
-
-            if (policy is PriceRangePolicy)
-            {
-                result = await policy.Validate(productDto.Price.ToString(), productDto.CategoryId);
-                validationResult.Errors.AddRange(result.Errors);
-                continue;
-            }
-            result = await policy.Validate(productDto.Name, Guid.Empty);
-            validationResult.Errors.AddRange(result.Errors);
+            
         }
 
         return validationResult;
 
     }
 
+    public async Task<bool> ReserveProductAsync(Guid productId, int quantity)
+    {
+        if (quantity <= 0)
+            throw new ArgumentException("Nieprawidłowa liczba sztuk do rezerwacji.");
+
+        var product = await _productRepository.GetByIdAsync(productId);
+        if (product == null)
+            throw new ArgumentException("Produkt nie istnieje.");
+
+        if (product.AvailableStock < quantity)
+            return false;
+
+        product.ReservedStock += quantity;
+        product.UpdatedAt = DateTime.UtcNow;
+        
+        await _productRepository.UpdateAsync(product);
+        return true;
+    }
+    public async Task<bool> ReleaseProductAsync(Guid productId, int quantity)
+    {
+        if (quantity <= 0)
+            throw new ArgumentException("Nieprawidłowa liczba sztuk do rezerwacji.");
+
+        var product = await _productRepository.GetByIdAsync(productId);
+        if (product == null)
+            throw new ArgumentException("Produkt nie istnieje.");
+
+        if (product.ReservedStock < quantity)
+            return false;
+
+        product.ReservedStock -= quantity;
+        product.UpdatedAt = DateTime.UtcNow;
+        
+        await _productRepository.UpdateAsync(product);
+        return true;
+    }
 
     
 }
