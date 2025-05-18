@@ -12,8 +12,8 @@ using ProductApp.Infrastructure.Context;
 namespace ProductApp.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250310154209_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250517163607_product3")]
+    partial class product3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,6 +109,9 @@ namespace ProductApp.Infrastructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
+                    b.Property<int>("ReservedStock")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
 
@@ -158,6 +161,29 @@ namespace ProductApp.Infrastructure.Migrations
                     b.ToTable("ProductsHistory");
                 });
 
+            modelBuilder.Entity("ProductApp.Domain.Entities.ProductReservation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ReservedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductReservations");
+                });
+
             modelBuilder.Entity("ProductApp.Domain.Entities.Product", b =>
                 {
                     b.HasOne("ProductApp.Domain.Entities.Category", "Category")
@@ -170,6 +196,17 @@ namespace ProductApp.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("ProductApp.Domain.Entities.ProductChangeHistory", b =>
+                {
+                    b.HasOne("ProductApp.Domain.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProductApp.Domain.Entities.ProductReservation", b =>
                 {
                     b.HasOne("ProductApp.Domain.Entities.Product", "Product")
                         .WithMany()

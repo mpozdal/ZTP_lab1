@@ -17,6 +17,7 @@ public static class DependencyInjection
         services.AddScoped<IForbiddenPhraseRepository, ForbiddenPhraseRepository> (); 
         services.AddScoped<ICategoryRepository, CategoryRepository> (); 
         services.AddScoped<IProductChangeHistoryRepository, ProductChangeHistoryRepository> (); 
+        services.AddScoped<ProductReservationRepository> (); 
 
         return services;
 

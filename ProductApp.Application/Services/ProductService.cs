@@ -8,20 +8,21 @@ using ProductApp.Domain.Policies;
 using ProductApp.Application.Interfaces;
 using ProductApp.Domain.Excetpions;
 using ProductApp.Domain.Validation;
+using ProductApp.Infrastructure.Repositories;
 
 namespace ProductApp.Application.Services;
 
 public class ProductService: IProductService
 {
     private readonly IProductRepository _productRepository;
-    private readonly IForbiddenPhraseService _forbiddenPhraseService;
+    private readonly ProductReservationRepository _productReservation;
     private readonly IProductChangeHistoryService _productChangeHistoryService;
     private readonly List<IValidationPolicy> _policies;
     
-    public ProductService(IProductRepository productRepository, IForbiddenPhraseService forbiddenPhraseService, IProductChangeHistoryService productChangeHistoryService, IEnumerable<IValidationPolicy> policies)
+    public ProductService(IProductRepository productRepository, ProductReservationRepository productReservation, IProductChangeHistoryService productChangeHistoryService, IEnumerable<IValidationPolicy> policies)
     {
         _productRepository = productRepository;
-        _forbiddenPhraseService = forbiddenPhraseService;
+        _productReservation = productReservation;
         _productChangeHistoryService = productChangeHistoryService;
         _policies = policies.ToList();
 
@@ -173,7 +174,14 @@ private async Task LogProductChangeAsync(Product existingProduct, string changeT
 
         if (product.AvailableStock < quantity)
             return false;
-
+        ProductReservation productReservation = new ProductReservation()
+        {
+            ProductId = productId,
+            Product =  product,
+            ReservedAt = DateTime.UtcNow,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(15)
+        };
+        await _productReservation.AddAsync(productReservation);
         product.ReservedStock += quantity;
         product.UpdatedAt = DateTime.UtcNow;
         

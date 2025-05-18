@@ -13,12 +13,15 @@ public class AppDbContext: DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<ForbiddenPhrase> ForbiddenPhrase { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<ProductReservation> ProductReservations { get; set; }
     public DbSet<ProductChangeHistory> ProductsHistory { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
+        modelBuilder.Entity<ProductReservation>().Property(p => p.Id).HasDefaultValueSql("gen_random_uuid()");
+     
         modelBuilder.Entity<Product>().Property(p => p.Id).HasDefaultValueSql("gen_random_uuid()");
         modelBuilder.Entity<Product>().Property(p => p.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
         modelBuilder.Entity<Product>().Property(p => p.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
